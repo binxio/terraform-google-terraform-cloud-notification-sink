@@ -1,0 +1,119 @@
+---
+swagger: "2.0"
+info:
+  title: ${API_ID} Terraform Cloud Notification Storage API
+  description: Sink for Terraform Cloud workspace run notifications
+  version: 1.0.0
+
+schemes:
+  - https
+
+paths:
+  /run:
+    post:
+      summary: store a terraform cloud workspace run notification
+      operationId: store
+      security:
+        - api_key: []
+      x-google-backend:
+        address: ${BACKEND_URL}
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/Notification"
+      responses:
+        200:
+          description: OK
+
+
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: key
+    in: query
+
+definitions:
+  Notification:
+    type: object
+    properties:
+      payload_version:
+        type: integer
+      notification_configuration_id:
+        type: string
+      run_url:
+        type:
+          - string
+          - 'null'
+      run_id:
+        type:
+          - string
+          - 'null'
+      run_message:
+        type:
+          - string
+          - 'null'
+      run_created_at:
+        type:
+          - string
+          - 'null'
+      run_created_by:
+        type:
+          - string
+          - 'null'
+      workspace_id:
+        type:
+          - string
+          - 'null'
+      workspace_name:
+        type:
+          - string
+          - 'null'
+      organization_name:
+        type:
+          - string
+          - 'null'
+      notifications:
+        type: array
+        items:
+          - type: object
+            properties:
+              message:
+                type: string
+              trigger:
+                type: string
+              run_status:
+                type:
+                  - string
+                  - 'null'
+              run_updated_at:
+                type:
+                  - string
+                  - 'null'
+              run_updated_by:
+                type:
+                  - string
+                  - 'null'
+            required:
+              - message
+              - trigger
+              - run_status
+              - run_updated_at
+              - run_updated_by
+    required:
+      - payload_version
+      - notification_configuration_id
+      - run_url
+      - run_id
+      - run_message
+      - run_created_at
+      - run_created_by
+      - workspace_id
+      - workspace_name
+      - organization_name
+      - notifications

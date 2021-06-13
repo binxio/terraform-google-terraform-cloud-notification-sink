@@ -1,0 +1,86 @@
+[
+  {
+    "name": "organization_name",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "workspace_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "run_created_by",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "run_message",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "run_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "notifications",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "fields": [
+      {
+        "name": "run_updated_by",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "run_updated_at",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE",
+        "description": "bq-datetime"
+      },
+      {
+        "name": "run_status",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "trigger",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "message",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      }
+    ]
+  },
+  {
+    "name": "run_created_at",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "bq-datetime"
+  },
+  {
+    "name": "run_url",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "workspace_name",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "notification_configuration_id",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "payload_version",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  }
+]
